@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+# Get CPU, Memory and Disk Usage
+cpu_usage=$(top -bn 1 | grep "Cpu(s)" | awk '{print $2 + $4}')
+memory_usage=$(free -m | grep Mem | awk '{print$3}')
+disk_usage=$(df -h / | tail -1 | awk '{print $5}')
+
+
+
+# Display System Monitoring info
+echo "CPU Usage: $cpu_usage%"
+echo "Memory Usage: $memory_usage MB"
+echo "Disk Usage: $disk_usage"
+
+
